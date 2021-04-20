@@ -19,6 +19,6 @@ func (p TupleList) Less(i, j int) bool {
 	} else {
 		strs := []string{p[i].Key, p[j].Key}
 		sort.Strings(strs)
-		return strs[0] == p[i].Key
+		return strs[0] != p[i].Key
 	}
 }
