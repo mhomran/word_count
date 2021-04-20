@@ -6,6 +6,8 @@ import (
 	"strings"
 )
 
+// Takes an input text file and outputs a string slice containing all
+// the splitted strings inside the text file
 func Split(FileName string) []string {
 	var SplittedArray []string
 	var ferr error
