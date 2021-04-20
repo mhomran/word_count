@@ -14,7 +14,7 @@ var m map[string]int
 
 func main() {
 	//splitting
-	SplittedData := splitter.Split("../../ExampleIn.txt")
+	SplittedData := splitter.Split("../../test/input/ExampleIn.txt")
 	if SplittedData == nil {
 		fmt.Println("[ERROR]\t Split function")
 		return
@@ -39,7 +39,7 @@ func main() {
 
 	sort.Sort(sort.Reverse(p))
 
-	fileOut, err := os.Create("../../out.txt")
+	fileOut, err := os.Create("../../test/output/out.txt")
 	if err != nil {
 		panic(err)
 	}
