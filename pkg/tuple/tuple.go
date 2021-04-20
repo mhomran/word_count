@@ -9,6 +9,8 @@ type Tuple struct {
 
 type TupleList []Tuple
 
+func (p TupleList) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
+
 func (p TupleList) Less(i, j int) bool {
 	if p[i].Value != p[j].Value {
 		return p[i].Value < p[j].Value
