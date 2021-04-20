@@ -9,6 +9,8 @@ type Tuple struct {
 
 type TupleList []Tuple
 
+func (p TupleList) Len() int { return len(p) }
+
 func (p TupleList) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
 
 func (p TupleList) Less(i, j int) bool {
