@@ -13,7 +13,15 @@ import (
 var m map[string]int
 
 func main() {
+	//splitting
 	SplittedData := splitter.Split("../../ExampleIn.txt")
+	if SplittedData == nil {
+		fmt.Println("[ERROR]\t Split function")
+		return
+	}
+
+	//mapping
+	//reducing
 
 	m = make(map[string]int)
 	//occurance
@@ -30,9 +38,6 @@ func main() {
 	}
 
 	sort.Sort(sort.Reverse(p))
-
-	oldVal := m[" "]
-	m[" "] = oldVal - 1
 
 	fileOut, err := os.Create("../../out.txt")
 	if err != nil {
