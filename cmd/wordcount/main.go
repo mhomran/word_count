@@ -6,29 +6,23 @@ import (
 	"sort"
 	"strconv"
 
+	"github.com/mhomran/word_count/pkg/mapper"
 	"github.com/mhomran/word_count/pkg/splitter"
 	"github.com/mhomran/word_count/pkg/tuple"
 )
 
-var m map[string]int
-
 func main() {
 	//splitting
-	SplittedData := splitter.Split("../../test/input/ExampleIn.txt")
+	SplittedData := splitter.Split("../../test/input/ExampleIn.txt", 5)
 	if SplittedData == nil {
 		fmt.Println("[ERROR]\t Split function")
 		return
 	}
 
 	//mapping
+	m := mapper.Mapper(SplittedData)
+
 	//reducing
-
-	m = make(map[string]int)
-	//occurance
-	for i := 0; i < len(SplittedData); i++ {
-		m[SplittedData[i]] += 1
-	}
-
 	p := make(tuple.TupleList, len(m))
 
 	i := 0
