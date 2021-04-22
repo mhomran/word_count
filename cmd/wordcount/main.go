@@ -8,11 +8,17 @@ import (
 	"github.com/mhomran/word_count/pkg/splitter"
 )
 
+const (
+	INPUT_FILE  = "../../test/input/ExampleIn.txt"
+	OUTPUT_FILE = "../../test/output/WordCountOutput.txt"
+	THREADS_NUM = 5
+)
+
 func main() {
 	var res bool
 
 	//splitting
-	SplittedData := splitter.Split("../../test/input/ExampleIn.txt", 5)
+	SplittedData := splitter.Split(INPUT_FILE, THREADS_NUM)
 	if SplittedData == nil {
 		fmt.Println("[ERROR]\t Split function")
 		return
@@ -20,32 +26,15 @@ func main() {
 
 	//mapping
 	WorkersOutput := mapper.Mapper(SplittedData)
+	if WorkersOutput == nil {
+		fmt.Println("[ERROR]\t Mapper function")
+		return
+	}
 
 	//reducing
-	res = reducer.Reducer("../../test/output/WordCountOutput.txt", WorkersOutput)
+	res = reducer.Reducer(OUTPUT_FILE, WorkersOutput)
 	if !res {
 		fmt.Println("[ERROR]\t Reducer function")
 		return
 	}
-	/*
-		p := make(tuple.TupleList, len(m))
-
-		i := 0
-		for k, v := range m {
-			p[i] = tuple.Tuple{Key: k, Value: v}
-			i++
-		}
-
-		sort.Sort(sort.Reverse(p))
-
-		fileOut, err := os.Create("../../test/output/out.txt")
-		if err != nil {
-			panic(err)
-		}
-
-		for _, k := range p {
-			str := k.Key + " : " + strconv.Itoa(k.Value) + " \n"
-			fmt.Fprint(fileOut, str)
-		}
-	*/
 }

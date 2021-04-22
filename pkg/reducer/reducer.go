@@ -9,10 +9,17 @@ import (
 	"github.com/mhomran/word_count/pkg/tuple"
 )
 
+//Takes a map and sorts it and write it in a file with a name
+//FileName
 func Reducer(FileName string, MapInput map[string]int) bool {
 	var file *os.File
 	var ferr error
 	var i int
+
+	if MapInput == nil {
+		return false
+	}
+
 	Tuples := make(tuple.TupleList, len(MapInput))
 
 	i = 0

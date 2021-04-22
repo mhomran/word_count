@@ -23,6 +23,10 @@ func Mapper(SplittedInput [][]string) map[string]int {
 	var i int
 	var wg sync.WaitGroup
 
+	if SplittedInput == nil {
+		return nil
+	}
+
 	for i = 0; i < len(SplittedInput); i++ {
 		wg.Add(1)
 		mapperThread(SplittedInput[i], MapperOutput, &wg)
