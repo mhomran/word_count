@@ -28,6 +28,7 @@ func Reducer(FileName string, MapInput map[string]int) bool {
 		i++
 	}
 
+	//sort.Reverse: just to sort the list in reverse order.
 	sort.Sort(sort.Reverse(Tuples))
 
 	file, ferr = os.Create(FileName)

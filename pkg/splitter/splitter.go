@@ -43,6 +43,7 @@ func Split(FileName string, SlicesNumber int) [][]string {
 		SplittedOutput = append(SplittedOutput, SlicedPart)
 	}
 
+	//last slice takes the excess
 	SplittedOutput[SlicesNumber-1] = SplittedArray[step*(SlicesNumber-1):]
 
 	ferr = file.Close()
